@@ -19,6 +19,22 @@
 				<label for="name">Name</label>
 				<input type="text" class="form-control" placeholder="Your name here" id="name" name="name">
             </div>
+            
+            <h4><strong>Question 1</strong></h4>
+            <div class="form-group">
+              <label for="question01">I love trying new things.</label>
+              <br>
+              <div class="col-md-4">
+                <select class="form-control" id="question1" name="scores[0]">
+                  <option>1 (Strongly Disagree)</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 (Strongly Agree)</option>
+                </select>
+              </div>
+            </div>
+
 			<div class="form-group">
 				<label for="photo">Link to Photo Image</label>
 				<input type="text" class="form-control" placeholder="http://mypic.jpg" id="photo" name="photo">
@@ -51,7 +67,7 @@
 		var userInput = {
 			name: $('#name').val().trim(),
 			photo: $('#photo').val().trim(),
-			scores: [/*$('#question01').val().trim(), $('#question02').val().trim(), $('#question03').val().trim(), $('#question04').val().trim(), $('#question05').val().trim(), $('#question06').val().trim(), $('#question07').val().trim(), $('#question08').val().trim(), $('#question09').val().trim(), $('#question10').val().trim()*/]
+			scores: [$('#question1').val().trim()]//, $('#question02').val().trim(), $('#question03').val().trim(), $('#question04').val().trim(), $('#question05').val().trim(), $('#question06').val().trim(), $('#question07').val().trim(), $('#question08').val().trim(), $('#question09').val().trim(), $('#question10').val().trim()*/]
 		}
 		var currentURL = window.location.origin;
 		$.post(currentURL + '/api/celebs', userInput, function(data) {
