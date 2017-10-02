@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Celebrity Comparison - Survey</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+	<div class="jumbotron">
+		<h1>Survey Questions</h1><br>
+		<hr>
+		<form method="POST" action="/api/celebs">
+			<h3>
+          About You
+      </h3>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" placeholder="Your name here" id="name" name="name">
+            </div>
+			<div class="form-group">
+				<label for="photo">Link to Photo Image</label>
+				<input type="text" class="form-control" placeholder="http://mypic.jpg" id="photo" name="photo">
+            </div>
+			<br>
+			<input type="submit" class="btn btn-primary" value="Compare" id="submit">
+		</form>
+	</div>
+	<hr>
+	<a href="/api/friends">API Celebrities</a> | <a href="https://github.com/jcoe10/friend-finder" target="_blank">GitHub Repo</a>
+</div>
+<div id="celebModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">X</button>
+				<h2 class="modal-title">Best Match</h2>
+			</div>
+			<div class="modal-body">
+				<h2 id="celebsName"></h2>
+				<img id="celebsImg" url="../app/data/celebrity.js"  width=500px alt="Celebrity">
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$('#submit').on("click", function() {
+		var userInput = {
+			name: $('#name').val().trim(),
+			photo: $('#photo').val().trim(),
+			scores: [/*$('#question01').val().trim(), $('#question02').val().trim(), $('#question03').val().trim(), $('#question04').val().trim(), $('#question05').val().trim(), $('#question06').val().trim(), $('#question07').val().trim(), $('#question08').val().trim(), $('#question09').val().trim(), $('#question10').val().trim()*/]
+		}
+		var currentURL = window.location.origin;
+		$.post(currentURL + '/api/celebs', userInput, function(data) {
+			$("#celebsName").text(data.name);
+			$("#celebsImg").attr("src", data.photo);
+		});
+		return false;
+	});
+</script>
+</body>
+</html>

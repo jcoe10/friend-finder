@@ -1,5 +1,5 @@
 {
-  "name": "friend-finder",
+  "name": "package.json",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,12 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcoe10/friend-finder.git"
+    "url": "git+https://github.com/lcanizzo/reservation-list.git"
   },
-  "author": "Jacob Coe",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jcoe10/friend-finder/issues"
+    "url": "https://github.com/lcanizzo/reservation-list/issues"
   },
-  "homepage": "https://github.com/jcoe10/friend-finder#readme"
+  "homepage": "https://github.com/lcanizzo/reservation-list#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "path": "^0.12.7"
+  }
 }

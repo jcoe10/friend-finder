@@ -1,1 +1,1 @@
-# friend-finder
+# Celebrity Comparison
